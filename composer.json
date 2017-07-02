@@ -1,0 +1,20 @@
+{
+	"name": "dnadesign/silverstripe-elemental-userforms",
+	"description": "Adds a new element for usersforms",
+	"type": "silverstripe-module",
+	"keywords": ["silverstripe", "element", "elemental", "content blocks", "userforms"],
+	"license": "BSD-3-Clause",
+	"authors": [{
+		"name": "John Milmine",
+		"email": "john.milmine@dna.co.nz"
+	}],
+	"minimum-stability": "dev",
+	"prefer-stable": true,
+	"require": {
+		"dnadesign/silverstripe-elemental": "dev-ss4",
+		"silverstripe/userforms": "dev-master"
+	},
+	"extra": {
+		"installer-name": "elemental-userforms"
+	}
+}
