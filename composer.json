@@ -1,7 +1,7 @@
 {
 	"name": "dnadesign/silverstripe-elemental-userforms",
 	"description": "Adds a new element for usersforms",
-	"type": "silverstripe-module",
+	"type": "silverstripe-vendormodule",
 	"keywords": ["silverstripe", "element", "elemental", "content blocks", "userforms"],
 	"license": "BSD-3-Clause",
 	"authors": [{
@@ -12,9 +12,18 @@
 	"prefer-stable": true,
 	"require": {
 		"dnadesign/silverstripe-elemental": "dev-ss4",
-		"silverstripe/userforms": "dev-master"
+		"silverstripe/userforms": "5.0.x-dev"
 	},
 	"extra": {
-		"installer-name": "elemental-userforms"
-	}
+		"installer-name": "elemental-userforms",
+        "branch-alias": {
+            "dev-master": "1.x-dev"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "DNADesign\\Elemental\\UserForms\\": "src/",
+            "DNADesign\\Elemental\\UserForms\\Tests\\": "tests/php/"
+        }
+    }
 }
