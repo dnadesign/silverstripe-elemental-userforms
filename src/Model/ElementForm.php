@@ -25,7 +25,7 @@ class ElementForm extends BaseElement
     /**
      * @var string
      */
-    private static $icon = 'elemental-userforms/images/form.svg';
+    private static $icon = 'dnadesign:silverstripe-elemental-userforms:images/form.svg';
 
     /**
      * @var string

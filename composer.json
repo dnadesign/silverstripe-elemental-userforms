@@ -12,13 +12,17 @@
 	"prefer-stable": true,
 	"require": {
 		"dnadesign/silverstripe-elemental": "dev-ss4",
-		"silverstripe/userforms": "5.0.x-dev"
+		"silverstripe/userforms": "5.0.x-dev",
+        "silverstripe/vendor-plugin": "^1.0"
 	},
 	"extra": {
 		"installer-name": "elemental-userforms",
         "branch-alias": {
             "dev-master": "1.x-dev"
-        }
+        },
+        "expose": [
+            "images"
+        ]
     },
     "autoload": {
         "psr-4": {
