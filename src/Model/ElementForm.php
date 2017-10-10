@@ -50,6 +50,4 @@ class ElementForm extends BaseElement
 
         return $form;
     }
-
-
 }

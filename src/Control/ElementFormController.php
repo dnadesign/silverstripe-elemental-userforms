@@ -6,8 +6,15 @@ use DNADesign\Elemental\Controllers\ElementController;
 use SilverStripe\Control\Controller;
 use SilverStripe\UserForms\Control\UserDefinedFormController;
 
+/**
+ * Handles Form Submissions
+ *
+ */
 class ElementFormController extends ElementController
 {
+    /**
+     * {@inheritDoc}
+     */
     public function __construct($element = null)
     {
         parent::__construct($element);
