@@ -1,12 +1,12 @@
 <?php
 
-namespace DNADesign\Elemental\UserForms\Model;
+namespace DNADesign\ElementalUserForms\Model;
 
 use SilverStripe\UserForms\Control\UserDefinedFormController;
 use SilverStripe\UserForms\UserForm;
 use SilverStripe\Control\Controller;
 use DNADesign\Elemental\Models\BaseElement;
-use DNADesign\Elemental\UserForms\Control\ElementFormController;
+use DNADesign\ElementalUserForms\Control\ElementFormController;
 
 class ElementForm extends BaseElement
 {
@@ -25,13 +25,16 @@ class ElementForm extends BaseElement
     /**
      * @var string
      */
-    private static $icon = 'dnadesign:silverstripe-elemental-userforms:images/form.svg';
+    private static $icon = 'dnadesign/silverstripe-elemental-userforms:images/form.svg';
 
     /**
      * @var string
      */
     private static $controller_class = ElementFormController::class;
 
+    /**
+     * @return UserForm
+     */
     public function ElementForm()
     {
         $controller = new UserDefinedFormController($this);
@@ -42,11 +45,13 @@ class ElementForm extends BaseElement
         }
 
         $form = $controller->Form();
-        $form->setFormAction(Controller::join_links(
-            $current->Link(),
-            'element',
-            $this->owner->ID
-        ));
+        $form->setFormAction(
+            Controller::join_links(
+                $current->Link(),
+                'element',
+                $this->owner->ID
+            )
+        );
 
         return $form;
     }

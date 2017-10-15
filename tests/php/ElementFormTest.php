@@ -1,6 +1,6 @@
 <?php
 
-namespace DNADesign\Elemental\UserForms\Tests;
+namespace DNADesign\ElementalUserForms\Tests;
 
 use SilverStripe\Dev\SapphireTest;
 

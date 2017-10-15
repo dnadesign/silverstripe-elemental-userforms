@@ -26,8 +26,8 @@
     },
     "autoload": {
         "psr-4": {
-            "DNADesign\\Elemental\\UserForms\\": "src/",
-            "DNADesign\\Elemental\\UserForms\\Tests\\": "tests/php/"
+            "DNADesign\\ElementalUserForms\\": "src/",
+            "DNADesign\\ElementalUserForms\\Tests\\": "tests/php/"
         }
     }
 }
