@@ -16,7 +16,6 @@
         "silverstripe/vendor-plugin": "^1.0"
 	},
 	"extra": {
-		"installer-name": "elemental-userforms",
         "branch-alias": {
             "dev-master": "1.x-dev"
         },
