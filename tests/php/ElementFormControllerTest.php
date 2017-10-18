@@ -11,8 +11,8 @@ use SilverStripe\Forms\FormAction;
 use SilverStripe\Forms\TextField;
 use DNADesign\Elemental\Controllers\ElementController;
 use DNADesign\Elemental\Models\ElementalArea;
-use DNADesign\Elemental\Tests\ElementControllerTest\TestElement;
-use DNADesign\Elemental\Tests\ElementControllerTest\TestPage;
+use DNADesign\Elemental\Tests\Src\TestElement;
+use DNADesign\Elemental\Tests\Src\TestPage;
 use SilverStripe\Versioned\Versioned;
 
 class ElementFormControllerTest extends FunctionalTest
@@ -21,10 +21,10 @@ class ElementFormControllerTest extends FunctionalTest
 
     protected static $use_draft_site = true;
 
-    protected static $extra_dataobjects = array(
+    protected static $extra_dataobjects = [
         TestPage::class,
         TestElement::class
-    );
+    ];
 
     protected function setUp()
     {

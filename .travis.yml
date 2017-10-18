@@ -26,7 +26,7 @@ before_script:
   - composer validate
   - composer require silverstripe/recipe-cms 1.0.x-dev  --no-update
   - if [[ $DB == PGSQL ]]; then composer require silverstripe/postgresql:2.0.x-dev --no-update; fi
-  - composer install --prefer-dist --no-interaction --no-progress --no-suggest --optimize-autoloader --verbose --profile
+  - composer install --prefer-source --no-interaction --no-progress --no-suggest --optimize-autoloader --verbose --profile
 
 script:
   - if [[ $PHPUNIT_TEST ]]; then vendor/bin/phpunit tests/; fi
