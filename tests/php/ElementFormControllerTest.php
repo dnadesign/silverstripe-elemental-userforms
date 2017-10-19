@@ -11,8 +11,9 @@ use SilverStripe\Forms\FormAction;
 use SilverStripe\Forms\TextField;
 use DNADesign\Elemental\Controllers\ElementController;
 use DNADesign\Elemental\Models\ElementalArea;
-use DNADesign\Elemental\Tests\ElementControllerTest\TestElement;
-use DNADesign\Elemental\Tests\ElementControllerTest\TestPage;
+use DNADesign\Elemental\Tests\Src\TestElement;
+use DNADesign\Elemental\Tests\Src\TestPage;
+use DNADesign\ElementalUserForms\Model\ElementForm;
 use SilverStripe\Versioned\Versioned;
 
 class ElementFormControllerTest extends FunctionalTest
@@ -37,7 +38,7 @@ class ElementFormControllerTest extends FunctionalTest
         $this->logInWithPermission('ADMIN');
         $page = $this->objFromFixture(TestPage::class, 'page1');
 
-        $element = $this->objFromFixture(TestElement::class, 'element1');
+        $element = $this->objFromFixture(ElementForm::class, 'formelement');
 
         $response = $this->get($page->URLSegment);
         $formAction = sprintf('%s/element/%d/Form', $page->URLSegment, $element->ID);
@@ -57,17 +58,12 @@ class ElementFormControllerTest extends FunctionalTest
         $element = $this->objFromFixture(TestElement::class, 'element1');
 
         $response = $this->get($page->URLSegment);
-        $response = $this->submitForm('Form_Form', null, array('TestValue' => 'Updated'));
 
+        $response = $this->submitForm('UserForm_Form_2', 'action_process', array('TestValue' => 'Updated'));
         $this->assertContains(
-            'TestValue: Updated',
+            'received your submission',
             $response->getBody(),
             'Form values are submitted to correct element form'
-        );
-        $this->assertContains(
-            sprintf('Element ID: %d', $element->ID),
-            $response->getBody(),
-            'Element form acts on correct element, as identified in the URL'
         );
     }
 }

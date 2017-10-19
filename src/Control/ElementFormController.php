@@ -5,28 +5,55 @@ namespace DNADesign\ElementalUserForms\Control;
 use DNADesign\Elemental\Controllers\ElementController;
 use SilverStripe\Control\Controller;
 use SilverStripe\UserForms\Control\UserDefinedFormController;
+use SilverStripe\Control\Director;
+use SilverStripe\Core\Injector\Injector;
 
-/**
- * Handles Form Submissions
- */
 class ElementFormController extends ElementController
 {
+    private static $allowed_actions = [
+        'Form',
+        'process',
+        'finished'
+    ];
+
     /**
-     * {@inheritDoc}
+     * @return SilverStripe\Forms\Form
      */
-    public function __construct($element = null)
+    public function Form()
     {
-        parent::__construct($element);
+        $request = $this->getRequest();
 
-        $current = Controller::curr();
+        $user = UserDefinedFormController::create($this->element);
+        $user->setRequest($request);
 
-        if ($current->getRequest()->isPOST()) {
-            // handle the post request.
-            $user = UserDefinedFormController::create($element);
-            $form = $user->Form();
+        return $user->Form();
+    }
 
-            $user->process($current->getRequest()->postVars(), $form);
-        }
+    public function process($data)
+    {
+        $request = $this->getRequest();
+
+        $user = UserDefinedFormController::create($this->element);
+        $user->setRequest($request);
+
+        return $user->process($data, $user->Form());
+    }
+
+    public function finished()
+    {
+        $request = $this->getRequest();
+
+        $user = UserDefinedFormController::create($this->element);
+        $user->setRequest($request);
+        $user->finished();
+
+        $page = $this->getPage();
+        $controller = Injector::inst()->create($page->getControllerName(), $this->element->getPage());
+        $element = $this->element;
+
+        return $controller->customise([
+            'Content' => $element->renderWith($element->getRenderTemplates('_ReceivedFormSubmission')),
+        ]);
     }
 
     /**

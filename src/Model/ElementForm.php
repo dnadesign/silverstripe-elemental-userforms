@@ -41,7 +41,7 @@ class ElementForm extends BaseElement
         $current = Controller::curr();
 
         if ($current && $current->getAction() == 'finished') {
-            return $controller->renderWith('ReceivedFormSubmission');
+            return $controller->renderWith(UserDefinedFormController::class .'_ReceivedFormSubmission');
         }
 
         $form = $controller->Form();
@@ -49,10 +49,25 @@ class ElementForm extends BaseElement
             Controller::join_links(
                 $current->Link(),
                 'element',
-                $this->owner->ID
+                $this->owner->ID,
+                'Form'
             )
         );
 
         return $form;
+    }
+
+    public function Link($action = null)
+    {
+        $current = Controller::curr();
+
+        if ($action === 'finished') {
+            return Controller::join_links(
+                $current->Link(),
+                'finished'
+            );
+        }
+
+        return parent::Link($action);
     }
 }
