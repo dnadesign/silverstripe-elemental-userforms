@@ -12,3 +12,7 @@ DNADesign\Elemental\Tests\Src\TestElement:
   element1:
     Title: Element 1
     ParentID: =>DNADesign\Elemental\Models\ElementalArea.area1
+DNADesign\ElementalUserForms\Model\ElementForm:
+  formelement:
+    Title: Element Form
+    ParentID: =>DNADesign\Elemental\Models\ElementalArea.area1
