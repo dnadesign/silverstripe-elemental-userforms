@@ -1,0 +1,8 @@
+en:
+  DNADesign\ElementalUserForms\Model\ElementForm:
+    BlockType: Form
+    PLURALNAME: forms
+    PLURALS:
+      one: 'A form'
+      other: '{count} forms'
+    SINGULARNAME: form
