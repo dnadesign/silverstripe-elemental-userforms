@@ -12,25 +12,15 @@ class ElementForm extends BaseElement
 {
     use UserForm;
 
-    /**
-     * @var string
-     */
     private static $table_name = 'ElementForm';
 
-    /**
-     * @var string
-     */
-    private static $title = 'Form';
-
-    /**
-     * @var string
-     */
     private static $icon = 'dnadesign/silverstripe-elemental-userforms:images/form.svg';
 
-    /**
-     * @var string
-     */
     private static $controller_class = ElementFormController::class;
+
+    private static $singular_name = 'form';
+
+    private static $plural_name = 'forms';
 
     /**
      * @return UserForm
@@ -69,5 +59,10 @@ class ElementForm extends BaseElement
         }
 
         return parent::Link($action);
+    }
+
+    public function getType()
+    {
+        return _t(__CLASS__ . '.BlockType', 'Form');
     }
 }
