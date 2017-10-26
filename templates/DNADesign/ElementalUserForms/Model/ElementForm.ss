@@ -3,6 +3,6 @@
         <h2 class="form-element__title">$Title</h2>
     <% end_if %>
 
-    $ElementForm
+    $Form
 </div>
 <div style="clear: both"></div>

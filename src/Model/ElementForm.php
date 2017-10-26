@@ -25,10 +25,11 @@ class ElementForm extends BaseElement
     /**
      * @return UserForm
      */
-    public function ElementForm()
+    public function Form()
     {
-        $controller = new UserDefinedFormController($this);
+        $controller = UserDefinedFormController::create($this);
         $current = Controller::curr();
+        $controller->setRequest($current->getRequest());
 
         if ($current && $current->getAction() == 'finished') {
             return $controller->renderWith(UserDefinedFormController::class .'_ReceivedFormSubmission');

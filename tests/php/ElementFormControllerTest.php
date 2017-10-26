@@ -3,17 +3,12 @@
 namespace DNADesign\ElementalUserForms\Tests;
 
 use DNADesign\Elemental\Models\BaseElement;
-use SilverStripe\Dev\FunctionalTest;
-use SilverStripe\Dev\TestOnly;
-use SilverStripe\Forms\FieldList;
-use SilverStripe\Forms\Form;
-use SilverStripe\Forms\FormAction;
-use SilverStripe\Forms\TextField;
-use DNADesign\Elemental\Controllers\ElementController;
-use DNADesign\Elemental\Models\ElementalArea;
 use DNADesign\Elemental\Tests\Src\TestElement;
 use DNADesign\Elemental\Tests\Src\TestPage;
+use DNADesign\ElementalUserForms\Control\ElementFormController;
 use DNADesign\ElementalUserForms\Model\ElementForm;
+use SilverStripe\Dev\FunctionalTest;
+use SilverStripe\UserForms\Control\UserDefinedFormController;
 use SilverStripe\Versioned\Versioned;
 
 class ElementFormControllerTest extends FunctionalTest
@@ -65,5 +60,21 @@ class ElementFormControllerTest extends FunctionalTest
             $response->getBody(),
             'Form values are submitted to correct element form'
         );
+    }
+
+    public function testUserFormControllerInitIsCalled()
+    {
+        $userFormControllerMock = $this->getMockBuilder(UserDefinedFormController::class)
+            ->setMethods(['doInit'])
+            ->getMock();
+
+        $userFormControllerMock->expects($this->once())->method('doInit');
+
+        $controller = new ElementFormController(new BaseElement);
+        $controller->getRequest()->setSession($this->session());
+        $controller->setUserFormController($userFormControllerMock);
+
+        $this->assertSame($userFormControllerMock, $controller->getUserFormController());
+        $controller->doInit();
     }
 }
