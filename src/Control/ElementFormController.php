@@ -4,9 +4,10 @@ namespace DNADesign\ElementalUserForms\Control;
 
 use DNADesign\Elemental\Controllers\ElementController;
 use SilverStripe\Control\Controller;
-use SilverStripe\UserForms\Control\UserDefinedFormController;
 use SilverStripe\Control\Director;
 use SilverStripe\Core\Injector\Injector;
+use SilverStripe\UserForms\Control\UserDefinedFormController;
+use SilverStripe\UserForms\Form\UserForm;
 
 class ElementFormController extends ElementController
 {
@@ -17,34 +18,40 @@ class ElementFormController extends ElementController
     ];
 
     /**
-     * @return SilverStripe\Forms\Form
+     * @var UserDefinedFormController
+     */
+    protected $userFormController;
+
+    protected function init()
+    {
+        parent::init();
+
+        $controller = $this->getUserFormController() ?: UserDefinedFormController::create($this->element);
+        $controller->setRequest($this->getRequest());
+        $controller->doInit();
+
+        $this->setUserFormController($controller);
+    }
+
+    /**
+     * @return UserForm
      */
     public function Form()
     {
-        $request = $this->getRequest();
-
-        $user = UserDefinedFormController::create($this->element);
-        $user->setRequest($request);
-
-        return $user->Form();
+        return $this->getUserFormController()->Form();
     }
 
     public function process($data)
     {
-        $request = $this->getRequest();
-
-        $user = UserDefinedFormController::create($this->element);
-        $user->setRequest($request);
+        $user = $this->getUserFormController();
 
         return $user->process($data, $user->Form());
     }
 
     public function finished()
     {
-        $request = $this->getRequest();
+        $user = $this->getUserFormController();
 
-        $user = UserDefinedFormController::create($this->element);
-        $user->setRequest($request);
         $user->finished();
 
         $page = $this->getPage();
@@ -76,5 +83,27 @@ class ElementFormController extends ElementController
         }
 
         return $segment;
+    }
+
+    /**
+     * Return the associated UserDefinedFormController
+     *
+     * @return UserDefinedFormController
+     */
+    public function getUserFormController()
+    {
+        return $this->userFormController;
+    }
+
+    /**
+     * Set the associated UserDefinedFormController
+     *
+     * @param UserDefinedFormController $controller
+     * @return $this
+     */
+    public function setUserFormController(UserDefinedFormController $controller)
+    {
+        $this->userFormController = $controller;
+        return $this;
     }
 }
