@@ -3,10 +3,10 @@
 namespace DNADesign\ElementalUserForms\Tests;
 
 use DNADesign\Elemental\Models\BaseElement;
-use DNADesign\Elemental\Tests\Src\TestElement;
-use DNADesign\Elemental\Tests\Src\TestPage;
 use DNADesign\ElementalUserForms\Control\ElementFormController;
 use DNADesign\ElementalUserForms\Model\ElementForm;
+use DNADesign\ElementalUserForms\Tests\Stub\TestElement;
+use DNADesign\ElementalUserForms\Tests\Stub\TestPage;
 use SilverStripe\Dev\FunctionalTest;
 use SilverStripe\UserForms\Control\UserDefinedFormController;
 use SilverStripe\Versioned\Versioned;
@@ -17,16 +17,10 @@ class ElementFormControllerTest extends FunctionalTest
 
     protected static $use_draft_site = true;
 
-    protected static $extra_dataobjects = array(
+    protected static $extra_dataobjects = [
         TestPage::class,
-        TestElement::class
-    );
-
-    protected function setUp()
-    {
-        Versioned::set_stage(Versioned::DRAFT);
-        parent::setUp();
-    }
+        TestElement::class,
+    ];
 
     public function testElementFormRendering()
     {
@@ -54,7 +48,7 @@ class ElementFormControllerTest extends FunctionalTest
 
         $response = $this->get($page->URLSegment);
 
-        $response = $this->submitForm('UserForm_Form_2', 'action_process', array('TestValue' => 'Updated'));
+        $response = $this->submitForm('UserForm_Form_2', 'action_process', ['TestValue' => 'Updated']);
         $this->assertContains(
             'received your submission',
             $response->getBody(),
