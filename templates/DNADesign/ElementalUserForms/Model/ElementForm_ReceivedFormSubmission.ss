@@ -1,3 +1,3 @@
-<div class="formelement__complete">
+<div class="form-element__complete">
     $OnCompleteMessage
 </div>
