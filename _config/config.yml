@@ -1,6 +1,0 @@
----
-Name: elementaluserformsconfig
----
-DNADesign\ElementalUserForms\Model\ElementForm:
-  extensions:
-    - DNADesign\ElementalUserForms\Extension\ElementFormExtension
