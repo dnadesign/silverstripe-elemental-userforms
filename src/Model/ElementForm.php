@@ -14,7 +14,7 @@ class ElementForm extends BaseElement
 
     private static $table_name = 'ElementForm';
 
-    private static $icon = 'dnadesign/silverstripe-elemental-userforms:images/form.svg';
+    private static $icon = 'font-icon-block-form';
 
     private static $controller_class = ElementFormController::class;
 
