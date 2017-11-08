@@ -22,10 +22,7 @@
 	"extra": {
         "branch-alias": {
             "dev-master": "1.x-dev"
-        },
-        "expose": [
-            "images"
-        ]
+        }
     },
     "autoload": {
         "psr-4": {
