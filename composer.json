@@ -11,8 +11,8 @@
 	"minimum-stability": "dev",
 	"prefer-stable": true,
 	"require": {
-		"dnadesign/silverstripe-elemental": "2.x-dev",
-		"silverstripe/userforms": "5.0.x-dev",
+		"dnadesign/silverstripe-elemental": "^2",
+		"silverstripe/userforms": "^5",
         "silverstripe/vendor-plugin": "^1.0"
 	},
     "require-dev": {
