@@ -2,8 +2,8 @@
 
 namespace DNADesign\ElementalUserForms\Tests\Stub;
 
-use SilverStripe\Dev\TestOnly;
 use DNADesign\Elemental\Models\BaseElement;
+use SilverStripe\Dev\TestOnly;
 
 class TestElement extends BaseElement implements TestOnly
 {
