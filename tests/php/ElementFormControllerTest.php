@@ -2,6 +2,7 @@
 
 namespace DNADesign\ElementalUserForms\Tests;
 
+use DNADesign\Elemental\Extensions\ElementalPageExtension;
 use DNADesign\Elemental\Models\BaseElement;
 use DNADesign\ElementalUserForms\Control\ElementFormController;
 use DNADesign\ElementalUserForms\Model\ElementForm;
@@ -9,13 +10,18 @@ use DNADesign\ElementalUserForms\Tests\Stub\TestElement;
 use DNADesign\ElementalUserForms\Tests\Stub\TestPage;
 use SilverStripe\Dev\FunctionalTest;
 use SilverStripe\UserForms\Control\UserDefinedFormController;
-use SilverStripe\Versioned\Versioned;
 
 class ElementFormControllerTest extends FunctionalTest
 {
     protected static $fixture_file = 'ElementFormTest.yml';
 
     protected static $use_draft_site = true;
+
+    protected static $required_extensions = [
+        TestPage::class => [
+            ElementalPageExtension::class,
+        ],
+    ];
 
     protected static $extra_dataobjects = [
         TestPage::class,
