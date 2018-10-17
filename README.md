@@ -15,7 +15,7 @@ content block called "Form", which can be used to create user defined forms.
 ## Requirements
 
 * SilverStripe ^4.0
-* Elemental ^2.0
+* Elemental ^4.0
 * UserForms ^5.0
 
 ## Installation
@@ -23,7 +23,7 @@ content block called "Form", which can be used to create user defined forms.
 Install with Composer:
 
 ```
-composer require dnadesign/silverstripe-elemental-userforms 1.x-dev
+composer require dnadesign/silverstripe-elemental-userforms 2.x-dev
 ```
 
 Ensure you run `dev/build?flush=1` to build your database and flush your cache.
@@ -47,6 +47,11 @@ module by default.
 There are valid use cases where this might be what you want (or variations of it), however we would recommend
 applying the ElementalPageExtension to subclasses of Page and excluding the UserDefinedForm class from this
 extension to avoid this situation from happening.
+
+## Inline editing
+
+Please note that form elements are not inline editable. Clicking on them in the CMS will take you to a GridField
+edit form instead.
 
 ## Blocking default CSS and JS
 
