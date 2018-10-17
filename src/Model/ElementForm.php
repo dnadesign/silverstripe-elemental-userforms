@@ -22,6 +22,8 @@ class ElementForm extends BaseElement
 
     private static $plural_name = 'forms';
 
+    private static $inline_editable = false;
+
     /**
      * @return UserForm
      */

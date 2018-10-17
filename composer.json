@@ -19,7 +19,7 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-        "dnadesign/silverstripe-elemental": "^3.0",
+        "dnadesign/silverstripe-elemental": "^4.0@dev",
         "silverstripe/userforms": "^5.0",
         "silverstripe/vendor-plugin": "^1.0"
     },
