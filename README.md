@@ -15,7 +15,7 @@ content block called "Form", which can be used to create user defined forms.
 ## Requirements
 
 * SilverStripe ^4.0
-* Elemental ^2.0
+* Elemental ^2.0 || ^3.0
 * UserForms ^5.0
 
 ## Installation
