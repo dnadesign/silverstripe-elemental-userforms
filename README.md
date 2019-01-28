@@ -23,7 +23,7 @@ content block called "Form", which can be used to create user defined forms.
 Install with Composer:
 
 ```
-composer require dnadesign/silverstripe-elemental-userforms 2.x-dev
+composer require dnadesign/silverstripe-elemental-userforms 3.x-dev
 ```
 
 Ensure you run `dev/build?flush=1` to build your database and flush your cache.
