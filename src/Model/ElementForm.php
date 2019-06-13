@@ -2,16 +2,22 @@
 
 namespace DNADesign\ElementalUserForms\Model;
 
-use SilverStripe\UserForms\Control\UserDefinedFormController;
-use SilverStripe\UserForms\UserForm;
-use SilverStripe\Control\Controller;
 use DNADesign\Elemental\Models\BaseElement;
 use DNADesign\ElementalUserForms\Control\ElementFormController;
+use SilverStripe\Control\Controller;
 use SilverStripe\Control\RequestHandler;
+use SilverStripe\Forms\FieldList;
+use SilverStripe\Forms\Form;
+use SilverStripe\Forms\GridField\GridField;
+use SilverStripe\Forms\GridField\GridFieldDetailForm;
+use SilverStripe\UserForms\Control\UserDefinedFormController;
+use SilverStripe\UserForms\UserForm;
 
 class ElementForm extends BaseElement
 {
-    use UserForm;
+    use UserForm {
+        getCMSFields as userFormGetCMSFields;
+    }
 
     private static $table_name = 'ElementForm';
 
@@ -24,6 +30,51 @@ class ElementForm extends BaseElement
     private static $plural_name = 'forms';
 
     private static $inline_editable = false;
+
+    /**
+     * This is a workaround for "Email recipients" functionality. In the userforms module, this
+     * relies on accessing the current userforms instance (EmailRecipient::getFormParent()) by
+     * using the LeftAndMain.currentPage session variable. When using an elemental userform, that
+     * session variable points to the parent page instead of the elemental userform instance.
+     */
+    public function getCMSFields()
+    {
+        $this->afterExtending('updateCMSFields', function (FieldList $fields) {
+            /** @var GridField $recipientsGridField */
+            $recipientsGridField = $fields->dataFieldByName('EmailRecipients');
+            /** @var GridFieldDetailForm $detailForm */
+            $detailForm = $recipientsGridField->getConfig()->getComponentByType(GridFieldDetailForm::class);
+
+            // Re-build the email recipients CMS fields with the "form parent" record populated
+            $detailForm->setItemEditFormCallback(function (Form $form) {
+                $record = $form->getRecord();
+
+                // EmailRecipient::getFormParent() will use these values if set, before falling back to the
+                // LeftAndMain.currentParent session variable (which won't work for the reasons above)
+                $record->FormID = $this->ID;
+                $record->FormClass = $this->ClassName;
+
+                // Re-build CMS fields
+                $form->setFields($record->getCMSFields());
+                // Re-populate the form
+                $form->loadDataFrom($record, $record->ID == 0 ? Form::MERGE_IGNORE_FALSEISH : Form::MERGE_DEFAULT);
+
+                // Everything below this point is copied from GridFieldDetailForm_ItemRequest::ItemEditForm()
+
+                if ($record->ID && !$record->canEdit()) {
+                    // Restrict editing of existing records
+                    $form->makeReadonly();
+                } elseif (!$record->ID && !$record->canCreate()) {
+                    // Restrict creation of new records
+                    $form->makeReadonly();
+                }
+
+                $form->Fields()->findOrMakeTab('Root')->setTemplate('SilverStripe\\Forms\\CMSTabSet');
+            });
+        });
+
+        return $this->userFormGetCMSFields();
+    }
 
     /**
      * @return UserForm
