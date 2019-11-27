@@ -2,15 +2,21 @@
 
 namespace DNADesign\ElementalUserForms\Model;
 
-use SilverStripe\UserForms\Control\UserDefinedFormController;
-use SilverStripe\UserForms\UserForm;
-use SilverStripe\Control\Controller;
 use DNADesign\Elemental\Models\BaseElement;
 use DNADesign\ElementalUserForms\Control\ElementFormController;
+use SilverStripe\Control\Controller;
+use SilverStripe\Forms\FieldList;
+use SilverStripe\Forms\Form;
+use SilverStripe\Forms\GridField\GridField;
+use SilverStripe\Forms\GridField\GridFieldDetailForm;
+use SilverStripe\UserForms\Control\UserDefinedFormController;
+use SilverStripe\UserForms\UserForm;
 
 class ElementForm extends BaseElement
 {
-    use UserForm;
+    use UserForm {
+        getCMSFields as userFormGetCMSFields;
+    }
 
     private static $table_name = 'ElementForm';
 
@@ -23,6 +29,43 @@ class ElementForm extends BaseElement
     private static $plural_name = 'forms';
 
     private static $inline_editable = false;
+
+    public function getCMSFields()
+    {
+        $this->afterExtending('updateCMSFields', function (FieldList $fields) {
+            /** @var GridField $recipientsGridField */
+            $recipientsGridField = $fields->dataFieldByName('EmailRecipients');
+            /** @var GridFieldDetailForm $detailForm */
+            $detailForm = $recipientsGridField->getConfig()->getComponentByType(GridFieldDetailForm::class);
+
+            // Re-build CMS fields with "parent" form record populated
+            $detailForm->setItemEditFormCallback(function (Form $form) {
+                $record = $form->getRecord();
+
+                // See EmailRecipient::getFormParent() for why this is necessary
+                $record->FormID = $this->ID;
+                $record->FormClass = $this->ClassName;
+
+                // Re-build CMS fields
+                $form->setFields($record->getCMSFields());
+                $form->loadDataFrom($record, $record->ID == 0 ? Form::MERGE_IGNORE_FALSEISH : Form::MERGE_DEFAULT);
+
+                if ($record->ID && !$record->canEdit()) {
+                    // Restrict editing of existing records
+                    $form->makeReadonly();
+                } elseif (!$record->ID && !$record->canCreate()) {
+                    // Restrict creation of new records
+                    $form->makeReadonly();
+                }
+
+                // Use CMS tabset template which stops tabs from being rendered twice
+                // Copied from GridFieldDetailForm_ItemRequest
+                $form->Fields()->findOrMakeTab('Root')->setTemplate('SilverStripe\\Forms\\CMSTabSet');
+            });
+        });
+
+        return $this->userFormGetCMSFields();
+    }
 
     /**
      * @return UserForm
