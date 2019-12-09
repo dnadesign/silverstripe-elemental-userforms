@@ -26,7 +26,7 @@ class ElementFormController extends ElementController
     {
         parent::init();
 
-        $controller = $this->getUserFormController() ?: UserDefinedFormController::create($this->element);
+        $controller = $this->getUserFormController() ?: UserDefinedFormController::create(Director::get_current_page());
         $controller->setRequest($this->getRequest());
         $controller->doInit();
 
