@@ -40,7 +40,7 @@ class ElementForm extends BaseElement
         $form = $controller->Form();
         $form->setFormAction(
             Controller::join_links(
-                $current->Link(),
+                $this->Link(),
                 'element',
                 $this->owner->ID,
                 'Form'
