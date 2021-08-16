@@ -68,4 +68,9 @@ class ElementForm extends BaseElement
     {
         return _t(__CLASS__ . '.BlockType', 'Form');
     }
+
+    public function duplicate($doWrite = true, $relations = null)
+    {
+        return parent::duplicate($doWrite, ['Fields']);
+    }
 }
