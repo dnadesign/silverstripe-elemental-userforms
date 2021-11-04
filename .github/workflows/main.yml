@@ -6,7 +6,7 @@ on:
 
 jobs:
   ci:
-    uses: silverstripe/github-actions-ci-cd/.github/workflows/ci.yml@0.1.6
+    uses: silverstripe/github-actions-ci-cd/.github/workflows/ci.yml@0.1.7
     # Requiring this for phpunit9 compatibility
     # Should be able to remove this once elemental 4.8.0 is released
     with:
