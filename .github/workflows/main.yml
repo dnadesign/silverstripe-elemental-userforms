@@ -10,4 +10,4 @@ jobs:
     # Requiring this for phpunit9 compatibility
     # Should be able to remove this once elemental 4.8.0 is released
     with:
-      composer_require_extra: dnadesign/silverstripe-elemental:4.x-dev
+      composer_require_extra: "dnadesign/silverstripe-elemental:4.x-dev dms/phpunit-arraysubset-asserts:^0.3.0"
