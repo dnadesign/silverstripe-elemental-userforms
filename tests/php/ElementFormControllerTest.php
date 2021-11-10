@@ -38,7 +38,7 @@ class ElementFormControllerTest extends FunctionalTest
         $response = $this->get($page->URLSegment);
         $formAction = sprintf('%s/element/%d/Form', $page->URLSegment, $element->ID);
 
-        $this->assertContains(
+        $this->assertStringContainsString(
             $formAction,
             $response->getBody(),
             'Element forms are rendered through ElementalArea templates'
@@ -55,7 +55,7 @@ class ElementFormControllerTest extends FunctionalTest
         $response = $this->get($page->URLSegment);
 
         $response = $this->submitForm('UserForm_Form_2', 'action_process', ['TestValue' => 'Updated']);
-        $this->assertContains(
+        $this->assertStringContainsString(
             'received your submission',
             $response->getBody(),
             'Form values are submitted to correct element form'
