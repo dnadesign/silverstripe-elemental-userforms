@@ -7,7 +7,8 @@ on:
 jobs:
   ci:
     uses: silverstripe/github-actions-ci-cd/.github/workflows/ci.yml@0.1.12
-    # Requiring this for phpunit9 compatibility
-    # Should be able to remove this once elemental 4.8.0 is released
     with:
+      # Requiring this for phpunit9 compatibility
+      # Should be able to remove this once elemental 4.8.0 is released
       composer_require_extra: "dnadesign/silverstripe-elemental:4.x-dev"
+      run_endtoend: true

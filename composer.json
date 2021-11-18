@@ -32,7 +32,8 @@
     "autoload": {
         "psr-4": {
             "DNADesign\\ElementalUserForms\\": "src/",
-            "DNADesign\\ElementalUserForms\\Tests\\": "tests/php/"
+            "DNADesign\\ElementalUserForms\\Tests\\": "tests/php/",
+            "DNADesign\\ElementalUserForms\\Tests\\Behat\\Context\\": "tests/behat/src"
         }
     }
 }
