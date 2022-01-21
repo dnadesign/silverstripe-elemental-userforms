@@ -6,7 +6,7 @@ use DNADesign\ElementalUserForms\Model\ElementForm;
 use SilverStripe\Dev\SapphireTest;
 use SilverStripe\Forms\GridField\GridField;
 
-class ElementFormTests extends SapphireTest
+class ElementFormTest extends SapphireTest
 {
     public function testFormDisplaysInCMS()
     {
