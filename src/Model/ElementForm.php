@@ -7,6 +7,7 @@ use SilverStripe\UserForms\UserForm;
 use SilverStripe\Control\Controller;
 use DNADesign\Elemental\Models\BaseElement;
 use DNADesign\ElementalUserForms\Control\ElementFormController;
+use SilverStripe\Control\RequestHandler;
 
 class ElementForm extends BaseElement
 {
@@ -37,10 +38,16 @@ class ElementForm extends BaseElement
             return $controller->renderWith(UserDefinedFormController::class .'_ReceivedFormSubmission');
         }
 
+        // $current may not have a functional Link(), e.g. QueuedTaskRunner during solr reindex
+        // surpress E_USER_WARNING from RequestHandler::Link() if url_segment config missing
+        set_error_handler(fn(int $errno, string $errstr) => true, E_USER_WARNING);
+        $link = $current->Link();
+        restore_error_handler();
+
         $form = $controller->Form();
         $form->setFormAction(
             Controller::join_links(
-                $current->Link(),
+                $link,
                 'element',
                 $this->owner->ID,
                 'Form'
