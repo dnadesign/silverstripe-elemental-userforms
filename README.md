@@ -1,10 +1,7 @@
-# SilverStripe Elemental UserForms
+# Silverstripe Elemental UserForms
 
-[![Build Status](http://img.shields.io/travis/dnadesign/silverstripe-elemental-userforms.svg?style=flat)](https://travis-ci.org/dnadesign/silverstripe-elemental-userforms)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/dnadesign/silverstripe-elemental-userforms/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/dnadesign/silverstripe-elemental-userforms/?branch=master)
-[![codecov](https://codecov.io/gh/dnadesign/silverstripe-elemental-userforms/branch/master/graph/badge.svg)](https://codecov.io/gh/dnadesign/silverstripe-elemental-userforms)
-[![Version](http://img.shields.io/packagist/v/dnadesign/silverstripe-elemental-userforms.svg?style=flat)](https://packagist.org/packages/dnadesign/silverstripe-elemental-userforms)
-[![License](http://img.shields.io/packagist/l/dnadesign/silverstripe-elemental-userforms.svg?style=flat)](LICENSE.md)
+[![CI](https://github.com/dnadesign/silverstripe-elemental-userforms/actions/workflows/ci.yml/badge.svg)](https://github.com/dnadesign/silverstripe-elemental-userforms/actions/workflows/ci.yml)
+[![Silverstripe supported module](https://img.shields.io/badge/silverstripe-supported-0071C4.svg)](https://www.silverstripe.org/software/addons/silverstripe-commercially-supported-module-list/)
 
 ## Introduction
 
@@ -14,7 +11,7 @@ content block called "Form", which can be used to create user defined forms.
 
 ## Requirements
 
-* SilverStripe ^4.0
+* Silverstripe ^4.0
 * Elemental ^4.0
 * UserForms ^5.0
 
