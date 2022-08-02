@@ -1,0 +1,16 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+  # Every Sunday at 4:30pm UTC
+  schedule:
+    - cron: '30 16 * * 0'
+
+jobs:
+  ci:
+    name: CI
+    # Only run cron on the dnadesign account
+    if: (github.event_name == 'schedule' && github.repository_owner == 'dnadesign') || (github.event_name != 'schedule')
+    uses: silverstripe/gha-ci/.github/workflows/ci.yml@v1
