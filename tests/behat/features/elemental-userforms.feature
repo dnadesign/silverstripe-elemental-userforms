@@ -4,11 +4,11 @@ Feature: Use elemental userforms
 
   Background:
     Given I add an extension "DNADesign\Elemental\Extensions\ElementalPageExtension" to the "Page" class
-    And the "group" "EDITOR group" has permissions "CMS_ACCESS_LeftAndMain"
+    And the "group" "EDITOR" has permissions "Access to 'Pages' section"
     And a "page" "My page"
 
   Scenario: Operate elemental userforms
-    Given I am logged in with "EDITOR" permissions
+    Given I am logged in as a member of "EDITOR" group
     When I go to "/admin/pages"
     And I follow "My page"
 
