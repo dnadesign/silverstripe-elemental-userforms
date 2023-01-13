@@ -15,8 +15,6 @@ class ElementFormControllerTest extends FunctionalTest
 {
     protected static $fixture_file = 'ElementFormTest.yml';
 
-    protected static $use_draft_site = true;
-
     protected static $required_extensions = [
         TestPage::class => [
             ElementalPageExtension::class,
@@ -30,12 +28,12 @@ class ElementFormControllerTest extends FunctionalTest
 
     public function testElementFormRendering()
     {
-        $this->logInWithPermission('ADMIN');
+        $this->logInWithPermission('VIEW_DRAFT_CONTENT');
         $page = $this->objFromFixture(TestPage::class, 'page1');
 
         $element = $this->objFromFixture(ElementForm::class, 'formelement');
 
-        $response = $this->get($page->URLSegment);
+        $response = $this->get($page->URLSegment . '?stage=Stage');
         $formAction = sprintf('%s/element/%d/Form', $page->URLSegment, $element->ID);
 
         $this->assertStringContainsString(
@@ -47,12 +45,12 @@ class ElementFormControllerTest extends FunctionalTest
 
     public function testElementFormSubmission()
     {
-        $this->logInWithPermission('ADMIN');
+        $this->logInWithPermission('VIEW_DRAFT_CONTENT');
         $page = $this->objFromFixture(TestPage::class, 'page1');
 
         $element = $this->objFromFixture(TestElement::class, 'element1');
 
-        $response = $this->get($page->URLSegment);
+        $response = $this->get($page->URLSegment . '?stage=Stage');
 
         $response = $this->submitForm('UserForm_Form_2', 'action_process', ['TestValue' => 'Updated']);
         $this->assertStringContainsString(
