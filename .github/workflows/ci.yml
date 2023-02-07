@@ -14,3 +14,5 @@ jobs:
     # Only run cron on the dnadesign account
     if: (github.event_name == 'schedule' && github.repository_owner == 'dnadesign') || (github.event_name != 'schedule')
     uses: silverstripe/gha-ci/.github/workflows/ci.yml@v1
+    with:
+      composer_require_extra: silverstripe/recipe-testing:^3
