@@ -9,21 +9,11 @@ This module integrates [silverstripe/silverstripe-userforms](https://github.com/
 into [dnadesign/silverstripe-elemental](https://github.com/dnadesign/silverstripe-elemental) and provides a new
 content block called "Form", which can be used to create user defined forms.
 
-## Requirements
-
-* Silverstripe ^4.0
-* Elemental ^4.0
-* UserForms ^5.0
-
 ## Installation
 
-Install with Composer:
-
+```sh
+composer require dnadesign/silverstripe-elemental-userforms
 ```
-composer require dnadesign/silverstripe-elemental-userforms 3.x-dev
-```
-
-Ensure you run `dev/build?flush=1` to build your database and flush your cache.
 
 ## Usage
 
