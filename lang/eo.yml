@@ -1,0 +1,8 @@
+eo:
+  DNADesign\ElementalUserForms\Model\ElementForm:
+    BlockType: Formularo
+    PLURALNAME: formularoj
+    PLURALS:
+      one: 'unu formularo'
+      other: '{count} formularoj'
+    SINGULARNAME: formularo

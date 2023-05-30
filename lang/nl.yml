@@ -1,0 +1,8 @@
+nl:
+  DNADesign\ElementalUserForms\Model\ElementForm:
+    BlockType: Formulier
+    PLURALNAME: Formulieren
+    PLURALS:
+      one: 'Een formulier'
+      other: '{count} formulieren'
+    SINGULARNAME: Formulier
