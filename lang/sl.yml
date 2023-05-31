@@ -1,0 +1,10 @@
+sl:
+  DNADesign\ElementalUserForms\Model\ElementForm:
+    BlockType: Obrazec
+    PLURALNAME: obrazci
+    PLURALS:
+      one: Obrazec
+      two: '{count} obrazca'
+      few: '{count} obrazcev'
+      other: '{count} obrazcev'
+    SINGULARNAME: obrazec
