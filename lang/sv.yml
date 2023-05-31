@@ -1,0 +1,5 @@
+sv:
+  DNADesign\ElementalUserForms\Model\ElementForm:
+    BlockType: Formulär
+    PLURALNAME: formulär
+    SINGULARNAME: formulär
