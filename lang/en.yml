@@ -6,3 +6,15 @@ en:
       one: 'A form'
       other: '{count} forms'
     SINGULARNAME: form
+    db_ClearButtonText: 'Clear button text'
+    db_DisableAuthenicatedFinishAction: 'Disable authenicated finish action'
+    db_DisableCsrfSecurityToken: 'Disable csrf security token'
+    db_DisableSaveSubmissions: 'Disable save submissions'
+    db_DisplayErrorMessagesAtTop: 'Display error messages at top'
+    db_EnableLiveValidation: 'Enable live validation'
+    db_OnCompleteMessage: 'On complete message'
+    db_ShowClearButton: 'Show clear button'
+    db_SubmitButtonText: 'Submit button text'
+    has_many_EmailRecipients: 'Email recipients'
+    has_many_Fields: Fields
+    has_many_Submissions: Submissions
