@@ -8,6 +8,7 @@ use SilverStripe\Control\Director;
 use SilverStripe\Core\Injector\Injector;
 use SilverStripe\UserForms\Control\UserDefinedFormController;
 use SilverStripe\UserForms\Form\UserForm;
+use SilverStripe\CMS\Model\SiteTree;
 
 class ElementFormController extends ElementController
 {
@@ -55,7 +56,11 @@ class ElementFormController extends ElementController
         $user->finished();
 
         $page = $this->getPage();
-        $controller = Injector::inst()->create($page->getControllerName(), $this->element->getPage());
+
+	while(!$page instanceof SiteTree) {
+            $page = $page->getPage();
+        }
+        $controller = Injector::inst()->create($page->getControllerName(), $page->data());
         $element = $this->element;
 
         return $controller->customise([
