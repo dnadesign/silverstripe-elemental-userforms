@@ -6,3 +6,15 @@ eo:
       one: 'unu formularo'
       other: '{count} formularoj'
     SINGULARNAME: formularo
+    db_ClearButtonText: 'Vakigi butonan tekston'
+    db_DisableAuthenicatedFinishAction: 'Malŝalti aŭtenigitan finagon'
+    db_DisableCsrfSecurityToken: 'Malŝalti csrf sekurecan ĵetonon'
+    db_DisableSaveSubmissions: 'Malŝalti konservi sendojn'
+    db_DisplayErrorMessagesAtTop: 'Vidigi prierarajn mesaĝojn supre'
+    db_EnableLiveValidation: 'Enŝalti publikan validigon'
+    db_OnCompleteMessage: 'Je kompleta mesaĝo'
+    db_ShowClearButton: 'Vidigi vakigan butonon'
+    db_SubmitButtonText: 'Sendi butonan tekston'
+    has_many_EmailRecipients: 'Retpoŝtaj ricevantoj'
+    has_many_Fields: Kampoj
+    has_many_Submissions: Sendoj
