@@ -3,8 +3,8 @@ sl:
     BlockType: Obrazec
     PLURALNAME: obrazci
     PLURALS:
-      one: Obrazec
-      two: '{count} obrazca'
       few: '{count} obrazcev'
+      one: Obrazec
       other: '{count} obrazcev'
+      two: '{count} obrazca'
     SINGULARNAME: obrazec
