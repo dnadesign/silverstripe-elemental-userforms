@@ -32,9 +32,10 @@ class ElementForm extends BaseElement
     {
         $controller = UserDefinedFormController::create($this);
         $current = Controller::curr();
-        $controller->setRequest($current->getRequest());
+        $request = $current->getRequest();
+        $controller->setRequest($request);
 
-        if ($current && $current->getAction() == 'finished') {
+        if ($current && $current->getAction() == 'finished' && $request->param('ID') == $this->ID) {
             return $controller->renderWith(UserDefinedFormController::class .'_ReceivedFormSubmission');
         }
 

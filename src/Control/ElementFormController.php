@@ -70,9 +70,17 @@ class ElementFormController extends ElementController
      */
     public function Link($action = null)
     {
-        $id = $this->element->ID;
-        $segment = Controller::join_links('element', $id, $action);
         $page = Director::get_current_page();
+        $id = $this->element->ID;
+
+        if ($this->getAction() === 'finished'
+            && $action !== 'finished'
+            && $this->getRequest()->param('ID') == $id
+        ) {
+            $segment = $action;
+        } else {
+            $segment = Controller::join_links('element', $id, $action);
+        }
 
         if ($page && !($page instanceof ElementController)) {
             return $page->Link($segment);
