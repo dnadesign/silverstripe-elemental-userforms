@@ -57,7 +57,11 @@ class ElementFormController extends ElementController
 
         $page = $this->getPage();
 
-	while(!$page instanceof SiteTree) {
+        if ($page === null) {
+            return null;
+        }
+
+        while(!$page instanceof SiteTree) {
             $page = $page->getPage();
         }
         $controller = Injector::inst()->create($page->getControllerName(), $page->data());
