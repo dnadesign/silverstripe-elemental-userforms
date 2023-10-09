@@ -61,7 +61,7 @@ class ElementFormController extends ElementController
             return null;
         }
 
-        while(!$page instanceof SiteTree) {
+        while (!$page instanceof SiteTree) {
             $page = $page->getPage();
 
             if ($page === null) {
