@@ -57,16 +57,8 @@ class ElementFormController extends ElementController
 
         $page = $this->getPage();
 
-        if ($page === null) {
-            return null;
-        }
-
         while ($page instanceof BaseElement) {
             $page = $page->getPage();
-
-            if ($page === null) {
-                return null;
-            }
         }
         $controller = Injector::inst()->create($page->getControllerName(), $page->data());
         $element = $this->element;
