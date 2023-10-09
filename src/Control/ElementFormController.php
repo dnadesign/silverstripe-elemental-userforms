@@ -2,13 +2,13 @@
 
 namespace DNADesign\ElementalUserForms\Control;
 
+use DNADesign\Elemental\Models\BaseElement;
 use DNADesign\Elemental\Controllers\ElementController;
 use SilverStripe\Control\Controller;
 use SilverStripe\Control\Director;
 use SilverStripe\Core\Injector\Injector;
 use SilverStripe\UserForms\Control\UserDefinedFormController;
 use SilverStripe\UserForms\Form\UserForm;
-use SilverStripe\CMS\Model\SiteTree;
 
 class ElementFormController extends ElementController
 {
@@ -61,7 +61,7 @@ class ElementFormController extends ElementController
             return null;
         }
 
-        while (!$page instanceof SiteTree) {
+        while ($page instanceof BaseElement) {
             $page = $page->getPage();
 
             if ($page === null) {
