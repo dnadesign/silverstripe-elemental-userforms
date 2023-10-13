@@ -2,6 +2,7 @@
 
 namespace DNADesign\ElementalUserForms\Control;
 
+use DNADesign\Elemental\Models\BaseElement;
 use DNADesign\Elemental\Controllers\ElementController;
 use SilverStripe\Control\Controller;
 use SilverStripe\Control\Director;
@@ -55,7 +56,11 @@ class ElementFormController extends ElementController
         $user->finished();
 
         $page = $this->getPage();
-        $controller = Injector::inst()->create($page->getControllerName(), $this->element->getPage());
+
+        while ($page instanceof BaseElement) {
+            $page = $page->getPage();
+        }
+        $controller = Injector::inst()->create($page->getControllerName(), $page->data());
         $element = $this->element;
 
         return $controller->customise([
