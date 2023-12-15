@@ -9,6 +9,10 @@ use DNADesign\Elemental\Models\BaseElement;
 use DNADesign\ElementalUserForms\Control\ElementFormController;
 use SilverStripe\Control\RequestHandler;
 
+/**
+ * @method SilverStripe\ORM\HasManyList<SilverStripe\UserForms\Model\Recipient\EmailRecipient> EmailRecipients()
+ * @method SilverStripe\ORM\HasManyList<SilverStripe\UserForms\Model\Submission\SubmittedForm> Submissions()
+ */
 class ElementForm extends BaseElement
 {
     use UserForm;
