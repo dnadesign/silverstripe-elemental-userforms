@@ -8,10 +8,13 @@ use SilverStripe\Control\Controller;
 use DNADesign\Elemental\Models\BaseElement;
 use DNADesign\ElementalUserForms\Control\ElementFormController;
 use SilverStripe\Control\RequestHandler;
+use SilverStripe\ORM\HasManyList;
+use SilverStripe\UserForms\Model\Recipient\EmailRecipient;
+use SilverStripe\UserForms\Model\Submission\SubmittedForm;
 
 /**
- * @method SilverStripe\ORM\HasManyList<SilverStripe\UserForms\Model\Recipient\EmailRecipient> EmailRecipients()
- * @method SilverStripe\ORM\HasManyList<SilverStripe\UserForms\Model\Submission\SubmittedForm> Submissions()
+ * @method HasManyList<EmailRecipient> EmailRecipients()
+ * @method HasManyList<SubmittedForm> Submissions()
  */
 class ElementForm extends BaseElement
 {
