@@ -1,0 +1,14 @@
+nl_NL:
+  DNADesign\ElementalUserForms\Model\ElementForm:
+    db_ClearButtonText: 'Wissen knoptekst'
+    db_DisableAuthenicatedFinishAction: 'Schakel geverifieerde voltooiingsactie uit'
+    db_DisableCsrfSecurityToken: 'Schakel csrf-beveiligingstoken uit'
+    db_DisableSaveSubmissions: 'Schakel het opslaan van inzendingen uit'
+    db_DisplayErrorMessagesAtTop: 'Geef foutmeldingen bovenaan weer'
+    db_EnableLiveValidation: 'Live-validatie inschakelen'
+    db_OnCompleteMessage: 'Bericht bij afronden formulier'
+    db_ShowClearButton: 'Toon `wissen` knop'
+    db_SubmitButtonText: 'Knoptekst verzenden'
+    has_many_EmailRecipients: E-mailontvangers
+    has_many_Fields: Velden
+    has_many_Submissions: Inzendingen
