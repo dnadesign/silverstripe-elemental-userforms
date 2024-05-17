@@ -1,9 +1,11 @@
 name: Dispatch CI
 
 on:
-  # At 5:25 PM UTC, only on Thursday and Friday
+  # At 2:10 PM UTC, only on Monday and Tuesday
   schedule:
-    - cron: '25 17 * * 4,5'
+    - cron: '10 14 * * 1,2'
+
+permissions: {}
 
 jobs:
   dispatch-ci:
@@ -11,6 +13,9 @@ jobs:
     # Only run cron on the dnadesign account
     if: (github.event_name == 'schedule' && github.repository_owner == 'dnadesign') || (github.event_name != 'schedule')
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: write
     steps:
       - name: Dispatch CI
         uses: silverstripe/gha-dispatch-ci@v1
