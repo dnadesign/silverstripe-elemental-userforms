@@ -1,0 +1,18 @@
+de:
+  DNADesign\ElementalUserForms\Model\ElementForm:
+    BlockType: Formular
+    PLURALNAME: Formulare
+    PLURALS:
+      one: 'Ein Formular'
+      other: '{count} Formulare'
+    SINGULARNAME: Formular
+    db_ClearButtonText: 'Text des Löschen-Buttons'
+    db_DisableCsrfSecurityToken: 'CSRF Sicherheitstoken deaktivieren'
+    db_DisableSaveSubmissions: 'Speichern von Formulareinreichungen deaktivieren'
+    db_DisplayErrorMessagesAtTop: 'Fehlermeldungen über dem Formular anzeigen'
+    db_EnableLiveValidation: 'Live Validierung aktivieren'
+    db_ShowClearButton: 'Löschen Button anzeigen'
+    db_SubmitButtonText: 'Text des Absenden Buttons'
+    has_many_EmailRecipients: 'E-Mail Empfänger'
+    has_many_Fields: Felder
+    has_many_Submissions: Einsendungen
