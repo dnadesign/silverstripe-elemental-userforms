@@ -19,7 +19,7 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-        "php": "^8.1",
+        "php": "^8.3",
         "silverstripe/framework": "^6",
         "dnadesign/silverstripe-elemental": "^6",
         "silverstripe/userforms": "^7",
