@@ -63,7 +63,7 @@ class ElementFormControllerTest extends FunctionalTest
     public function testUserFormControllerInitIsCalled()
     {
         $userFormControllerMock = $this->getMockBuilder(UserDefinedFormController::class)
-            ->setMethods(['doInit'])
+            ->onlyMethods(['doInit'])
             ->getMock();
 
         $userFormControllerMock->expects($this->once())->method('doInit');
