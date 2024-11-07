@@ -30,11 +30,6 @@ class ElementForm extends BaseElement
 
     private static $plural_name = 'forms';
 
-    /**
-     * @deprecated 5.4.0 use class_description instead.
-     */
-    private static $description = 'A user defined form';
-
     private static $class_description = 'A user defined form';
 
     private static $inline_editable = false;
