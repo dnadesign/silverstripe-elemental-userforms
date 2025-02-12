@@ -1,6 +1,7 @@
 en:
   DNADesign\ElementalUserForms\Model\ElementForm:
     BlockType: Form
+    CLASS_DESCRIPTION: 'A user defined form'
     PLURALNAME: forms
     PLURALS:
       one: 'A form'
