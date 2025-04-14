@@ -3,15 +3,18 @@
 namespace DNADesign\ElementalUserForms\Model;
 
 use SilverStripe\UserForms\Control\UserDefinedFormController;
+use SilverStripe\UserForms\Model\Recipient\EmailRecipient;
+use SilverStripe\UserForms\Model\Submission\SubmittedForm;
 use SilverStripe\UserForms\UserForm;
 use SilverStripe\Control\Controller;
+use SilverStripe\ORM\HasManyList;
 use DNADesign\Elemental\Models\BaseElement;
 use DNADesign\ElementalUserForms\Control\ElementFormController;
 use SilverStripe\Control\RequestHandler;
 
 /**
- * @method SilverStripe\ORM\HasManyList<SilverStripe\UserForms\Model\Recipient\EmailRecipient> EmailRecipients()
- * @method SilverStripe\ORM\HasManyList<SilverStripe\UserForms\Model\Submission\SubmittedForm> Submissions()
+ * @method HasManyList<EmailRecipient> EmailRecipients()
+ * @method HasManyList<SubmittedForm> Submissions()
  */
 class ElementForm extends BaseElement
 {
