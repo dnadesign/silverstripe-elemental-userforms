@@ -11,9 +11,6 @@ use SilverStripe\ORM\HasManyList;
 use DNADesign\Elemental\Models\BaseElement;
 use DNADesign\ElementalUserForms\Control\ElementFormController;
 use SilverStripe\Control\RequestHandler;
-use SilverStripe\ORM\HasManyList;
-use SilverStripe\UserForms\Model\Recipient\EmailRecipient;
-use SilverStripe\UserForms\Model\Submission\SubmittedForm;
 
 /**
  * @method HasManyList<EmailRecipient> EmailRecipients()
