@@ -13,7 +13,7 @@ Feature: Use elemental userforms
     And I follow "My page"
 
     # Add userforms block
-    And I press the "Add block" button
+    And I press the "Add new block" button
     And I wait for 1 seconds
     And I click on the ".font-icon-block-form" element
     And I wait for 5 seconds
@@ -23,9 +23,9 @@ Feature: Use elemental userforms
     And I click on the ".element-editor-header__expand" element
     And I fill in "Title" with "My form title"
     And I click the "Form Fields" CMS tab
-    And I press the "Add Field" button
+    And I press the "Add new Field" button
     And I fill in "Form_Fields_GridFieldEditableColumns_2_Title" with "My textfield 1"
-    And I press the "Publish" button  
+    And I press the "Publish" button
 
     # Assert that it saved
     Then the rendered HTML should contain "My textfield 1"
