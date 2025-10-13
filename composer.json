@@ -20,9 +20,9 @@
     "prefer-stable": true,
     "require": {
         "php": "^8.3",
-        "silverstripe/framework": "^6",
-        "dnadesign/silverstripe-elemental": "^6",
-        "silverstripe/userforms": "^7"
+        "silverstripe/framework": "^6.2",
+        "dnadesign/silverstripe-elemental": "^6.2",
+        "silverstripe/userforms": "^7.1"
     },
     "require-dev": {
         "silverstripe/recipe-testing": "^4",
