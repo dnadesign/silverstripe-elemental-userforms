@@ -41,17 +41,20 @@ class ElementForm extends BaseElement
     {
         $controller = UserDefinedFormController::create($this);
         $current = Controller::curr();
-        $request = $current->getRequest();
-        $controller->setRequest($request);
+
+        if ($current) {
+            $request = $current->getRequest();
+            $controller->setRequest($request);
+        }
 
         if ($current && $current->getAction() == 'finished' && $request->param('ID') == $this->ID) {
             return $controller->renderWith(UserDefinedFormController::class .'_ReceivedFormSubmission');
         }
 
         // $current may not have a functional Link(), e.g. QueuedTaskRunner during solr reindex
-        // surpress E_USER_WARNING from RequestHandler::Link() if url_segment config missing
+        // suppress E_USER_WARNING from RequestHandler::Link() if url_segment config missing
         set_error_handler(fn(int $errno, string $errstr) => true, E_USER_WARNING);
-        $link = $current->Link();
+        $link = $current?->Link() ?? '';
         restore_error_handler();
 
         $form = $controller->Form();
