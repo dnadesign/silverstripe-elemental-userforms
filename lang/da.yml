@@ -1,0 +1,21 @@
+da:
+  DNADesign\ElementalUserForms\Model\ElementForm:
+    BlockType: Formular
+    CLASS_DESCRIPTION: 'Brugerdefineret formular'
+    PLURALNAME: formularer
+    PLURALS:
+      one: 'En formular'
+      other: '{count} formularer'
+    SINGULARNAME: formular
+    db_ClearButtonText: 'Tekst på "ryd" knap'
+    db_DisableAuthenicatedFinishAction: 'Deaktiver autoriseret afsluttende handling'
+    db_DisableCsrfSecurityToken: 'Deaktiver csrf sikkerheds token'
+    db_DisableSaveSubmissions: 'Deaktiver gem indsendelser'
+    db_DisplayErrorMessagesAtTop: 'Vis fejlmeddelelser øverst'
+    db_EnableLiveValidation: 'Aktiver live validering'
+    db_OnCompleteMessage: 'Besked ved gennemført'
+    db_ShowClearButton: 'Vis ryd knap'
+    db_SubmitButtonText: 'Tekst på "indsend" knap'
+    has_many_EmailRecipients: 'E-mail modtagere'
+    has_many_Fields: Felter
+    has_many_Submissions: Indsendelser
